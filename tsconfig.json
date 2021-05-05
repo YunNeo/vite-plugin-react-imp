@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "es2015",
+      "moduleResolution": "node",
+      "strict": true,
+      "declaration": true,
+      "noUnusedLocals": true,
+      "esModuleInterop": true,
+      "outDir": "dist",
+      "module": "commonjs",
+      "lib": ["ESNext"],
+      "sourceMap": false,
+      "types":["@types/jest"]
+    },
+    "include": [
+        "index.ts",
+        "share.ts",
+    ]
+  }

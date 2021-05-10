@@ -19,19 +19,29 @@ or
 yarn add vite-plugin-react-imp -D
 ```
 ## Example
-``` js
+```js
+// vite.config.js
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh';
-import injectStyle from 'vite-plugin-imp'
+import vue from '@vitejs/plugin-vue'
+import injectStyle from 'vite-plugin-react-imp'
+
 export default defineConfig({
   plugins: [
-      reactRefresh(),
-      injectStyle(config)
+    vue(), 
+    injectStyle({
+      libList: [
+        {
+          libName: 'antd',
+          style(componentName) {
+            return `antd/es/${componentName}/style/css.js`
+          }
+        }
+      ]
+    })
   ]
 })
 ```
-
-config is ImpConfig
+parameter is ImpConfig
 ``` ts
 eexport interface LibItem {
   /**
@@ -53,25 +63,4 @@ interface ImpConfig {
   libList: libItem[]
 }
 ```
-```js
-// vite.config.js
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import injectStyle from 'vite-plugin-imp'
 
-export default defineConfig({
-  plugins: [
-    vue(), 
-    injectStyle({
-      libList: [
-        {
-          libName: 'antd',
-          style(componentName) {
-            return `antd/es/${componentName}/style/css.js`
-          }
-        }
-      ]
-    })
-  ]
-})
-```
